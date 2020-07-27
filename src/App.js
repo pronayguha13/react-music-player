@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import TrackList from "./components/TrackList";
 import AddTrackButton from "./components/AddTrackButton";
-import AudioPlayer from "./components/AudioPlayer";
+import PlayerControl from "./components/PlayerControl";
 const App = () => {
   const [trackList, setTrackList] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
@@ -30,7 +30,7 @@ const App = () => {
         selectTrackHandler={selectTrackHandler}
       />
       <AddTrackButton trackList={trackList} updateTrackList={getNewTrack} />
-      {nowPlaying.length > 0 ? <AudioPlayer track={nowPlaying} /> : null}
+      {nowPlaying.length > 0 ? <PlayerControl track={nowPlaying} /> : null}
     </div>
   );
 };
