@@ -1,7 +1,11 @@
 import React from "react";
 import "./TrackList.css";
-import { Card, Button } from "react-bootstrap";
-export default function TrackList({ trackList, selectTrackHandler }) {
+import { Card } from "react-bootstrap";
+export default function TrackList({
+  trackList,
+  setNowPlayingHandler,
+  isPlaying,
+}) {
   console.log("TrackList -> trackList", trackList);
   return (
     <div className="TrackList">
@@ -9,38 +13,38 @@ export default function TrackList({ trackList, selectTrackHandler }) {
         trackList.map((track, index) => (
           <Card style={{ height: 50 }} key={index}>
             <p style={{ marginBottom: "auto", marginTop: "auto" }}>
-              <button
-                style={{
-                  border: "none",
-                  backgroundColor: "white",
-                  margin: "0",
-                  outline: "none",
-                }}
-                onClick={() => selectTrackHandler(index)}
-              >
+              {isPlaying ? (
                 <img
                   style={{
                     width: "24px",
                     border: "none",
                     outline: "none",
                     backgroundColor: "white",
+                    marginRight: "30px",
+                  }}
+                  src="/assets/pause-button-24.png"
+                  alt="pause"
+                />
+              ) : (
+                <img
+                  style={{
+                    width: "24px",
+                    border: "none",
+                    outline: "none",
+                    backgroundColor: "white",
+                    marginRight: 30,
                   }}
                   src="/assets/playButton.png"
                   alt="play"
                 />
-              </button>
-              {track.name}
-              <button
-                style={{
-                  float: "right",
-                  backgroundColor: "white",
-                  border: "none",
-                  outline: "none",
-                  marginRight: 12,
-                }}
+              )}
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => setNowPlayingHandler(index)}
               >
-                :
-              </button>
+                {" "}
+                {track.name}
+              </span>
             </p>
           </Card>
         ))
