@@ -12,8 +12,12 @@ export default function AddTrackButton({ trackList, updateTrackList }) {
   };
 
   return (
-    <div>
-      <Button className="w-100" onClick={() => myRef.current.click()}>
+    <div style={{ textAlign: "center", background: "#002651" }}>
+      <Button
+        // className="w-100"
+        style={{ borderRadius: "50%", marginBottom: 20 }}
+        onClick={() => myRef.current.click()}
+      >
         +
       </Button>
       <input

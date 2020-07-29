@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Navbar from "./components/Navbar";
 import TrackList from "./components/TrackList";
 import AddTrackButton from "./components/AddTrackButton";
 import AudioPlayer from "react-h5-audio-player";
+import Navbar from "./components/Header";
 
 const App = () => {
   const [trackList, setTrackList] = useState([]);
@@ -19,20 +19,34 @@ const App = () => {
   };
 
   const setNowPlayingHandler = (index) => {
-    console.log("setNowPlayingHandler -> index", index);
     setNowPlaying([trackList[index]]);
-    console.log(trackList[index]);
     setIsPlaying(true);
   };
 
   return (
     <div className="container-fluid">
       <Navbar />
-      <TrackList
-        trackList={trackList}
-        setNowPlayingHandler={setNowPlayingHandler}
-        isPlaying={isPlaying}
-      />
+      {trackList.length ? (
+        <TrackList
+          nowPlaying={nowPlaying}
+          trackList={trackList}
+          setNowPlayingHandler={setNowPlayingHandler}
+          isPlaying={isPlaying}
+        />
+      ) : (
+        <h3
+          style={{
+            textAlign: "center",
+            color: "#fff",
+            paddingTop: "20%",
+            paddingBottom: "20%",
+            background: "#002651",
+            marginBottom: 0,
+          }}
+        >
+          No Track
+        </h3>
+      )}
       <AddTrackButton trackList={trackList} updateTrackList={getNewTrack} />
       {nowPlaying.length > 0 ? (
         <AudioPlayer
