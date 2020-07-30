@@ -6,14 +6,19 @@ export default function AddTrackButton({ trackList, updateTrackList }) {
 
   const fileUploadHandler = (e) => {
     const file = e.target.files[0];
-    console.log("fileUploadHandler -> file", file);
+    console.log("fileUploadHandler -> file", file, file.type);
     updateTrackList(file);
   };
 
   return (
     <div style={{ textAlign: "center", background: "#002651" }}>
       <Button
-        style={{ borderRadius: "50%", marginBottom: 20 }}
+        style={{
+          border: "none",
+          borderRadius: "50%",
+          marginBottom: 20,
+          outline: "none",
+        }}
         onClick={() => myRef.current.click()}
       >
         +

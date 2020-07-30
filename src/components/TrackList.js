@@ -6,6 +6,7 @@ export default function TrackList({
   nowPlaying,
   setNowPlayingHandler,
   isPlaying,
+  error,
 }) {
   console.log("TrackList -> trackList", trackList);
 
@@ -21,16 +22,17 @@ export default function TrackList({
             marginBottom: 10,
           }}
           key={index}
+          onClick={() => setNowPlayingHandler(index)}
         >
           <p style={{ marginBottom: "auto", marginTop: "auto" }}>
-            {/* && trackList.indexOf(nowPlaying) === index */}
             {isPlaying && nowPlaying[0].name === track.name ? (
               <img
                 style={{
                   width: "24px",
                   border: "none",
                   outline: "none",
-                  marginRight: "30px",
+                  // marginRight: "30px",
+                  marginLeft: 10,
                 }}
                 src="/assets/pause-button-24.png"
                 alt="pause"
@@ -41,22 +43,18 @@ export default function TrackList({
                   width: "24px",
                   border: "none",
                   outline: "none",
-                  marginRight: 30,
+                  // marginRight: 30,
+                  marginLeft: 10,
                 }}
                 src="/assets/playButton.png"
                 alt="play"
               />
             )}
-            <span
-              style={{ cursor: "pointer" }}
-              onClick={() => setNowPlayingHandler(index)}
-            >
-              {" "}
-              {track.name}
-            </span>
+            <span style={{ cursor: "pointer" }}> {track.name}</span>
           </p>
         </Card>
       ))}
+      {error && <p style={{ color: "#fff", textAlign: "center" }}>{error}</p>}
     </div>
   );
 }

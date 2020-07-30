@@ -8,6 +8,8 @@ const App = () => {
   const [trackList, setTrackList] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [error, setError] = useState(null);
+  const types = ["audio/mp3", "audio/ogg", "audio/mpeg"];
 
   const autoNextTrackSelector = () => {
     const currID = trackList.indexOf(nowPlaying[0]);
@@ -22,10 +24,18 @@ const App = () => {
 
   const getNewTrack = (newTrack) => {
     console.log("getNewTrack -> newTrack", newTrack);
-    const prevTrackList = trackList;
-    if (newTrack !== undefined) {
+    if (newTrack !== undefined && types.includes(newTrack.type)) {
+      console.log("FileUploadHandler -> newTrack", newTrack);
+      const prevTrackList = trackList;
       const newTrackList = [...prevTrackList, newTrack];
+      console.log("getNewTrack -> newTrackList", newTrackList);
       setTrackList(newTrackList);
+      setError("");
+    } else if (newTrack.type === "audio/x-m4a") {
+      setError("Unsupported File format");
+    } else {
+      console.log("no File or invalid type");
+      setError("Please select an audio file");
     }
   };
 
@@ -37,12 +47,13 @@ const App = () => {
   return (
     <div className="container-fluid">
       <Navbar />
-      {trackList.length ? (
+      {trackList.length || error !== null ? (
         <TrackList
           nowPlaying={nowPlaying}
           trackList={trackList}
           setNowPlayingHandler={setNowPlayingHandler}
           isPlaying={isPlaying}
+          error={error}
         />
       ) : (
         <h3
@@ -55,7 +66,7 @@ const App = () => {
             marginBottom: 0,
           }}
         >
-          No Track
+          Add a track and start enjoying...
         </h3>
       )}
       <AddTrackButton trackList={trackList} updateTrackList={getNewTrack} />
