@@ -54,7 +54,18 @@ export default function TrackList({
           </p>
         </Card>
       ))}
-      {error && <p style={{ color: "#fff", textAlign: "center" }}>{error}</p>}
+      {error && (
+        <p
+          style={{
+            color: "#fff",
+            textAlign: "center",
+            paddingTop: "30%",
+            paddingBottom: "30%",
+          }}
+        >
+          {error}
+        </p>
+      )}
     </div>
   );
 }

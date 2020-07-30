@@ -45,7 +45,7 @@ const App = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="w-100">
       <Navbar />
       {trackList.length || error !== null ? (
         <TrackList
@@ -60,8 +60,8 @@ const App = () => {
           style={{
             textAlign: "center",
             color: "#fff",
-            paddingTop: "20%",
-            paddingBottom: "20%",
+            paddingTop: "50%",
+            paddingBottom: "50%",
             background: "#002651",
             marginBottom: 0,
           }}

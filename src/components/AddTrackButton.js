@@ -6,7 +6,6 @@ export default function AddTrackButton({ trackList, updateTrackList }) {
 
   const fileUploadHandler = (e) => {
     const file = e.target.files[0];
-    console.log("fileUploadHandler -> file", file, file.type);
     updateTrackList(file);
   };
 
