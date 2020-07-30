@@ -9,6 +9,17 @@ const App = () => {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const autoNextTrackSelector = () => {
+    const currID = trackList.indexOf(nowPlaying[0]);
+    if (trackList.length === 1 && currID === 0) {
+      setNowPlaying([trackList[0]]);
+    } else if (trackList.length > 1 && currID === trackList.length - 1) {
+      setNowPlaying([trackList[0]]);
+    } else {
+      setNowPlaying([trackList[currID + 1]]);
+    }
+  };
+
   const getNewTrack = (newTrack) => {
     console.log("getNewTrack -> newTrack", newTrack);
     const prevTrackList = trackList;
@@ -53,6 +64,7 @@ const App = () => {
           src={URL.createObjectURL(new Blob(nowPlaying))}
           autoPlay
           volume="0.5"
+          onEnded={autoNextTrackSelector}
         />
       ) : null}
     </div>
