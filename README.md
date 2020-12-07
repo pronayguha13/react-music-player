@@ -4,7 +4,7 @@ A web based music player app.
 
 ## Demo
 
-**[ReactTrack-Play Your Jam](https://focused-noether-cecda2.netlify.app/)**
+**[ReactTrack-Play Your Jam](https://music-play-react.netlify.app/)**
 
 ![ReactTrackDemo](ReactTrack.png)
 
