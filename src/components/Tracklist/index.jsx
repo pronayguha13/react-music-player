@@ -1,13 +1,12 @@
-import React from "react";
-import "./TrackList.css";
+import React, { useContext } from "react";
 import { Card } from "react-bootstrap";
-export default function TrackList({
-  trackList,
-  nowPlaying,
-  setNowPlayingHandler,
-  isPlaying,
-  error,
-}) {
+
+import styles from "./styles.module.css";
+import { MusicContext } from "../../global/MusicContext";
+
+const TrackList = () => {
+  const { trackList, nowPlaying, setNowPlayingHandler, isPlaying, error } =
+    useContext(MusicContext);
   console.log("TrackList -> trackList", trackList);
 
   nowPlaying.length ? console.log(nowPlaying[0].name) : console.log("Nothing");
@@ -68,4 +67,6 @@ export default function TrackList({
       )}
     </div>
   );
-}
+};
+
+export default TrackList;

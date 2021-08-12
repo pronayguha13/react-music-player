@@ -1,12 +1,15 @@
-import React from "react";
+import React, { createRef, useContext } from "react";
 import { Button } from "react-bootstrap";
 
-export default function AddTrackButton({ trackList, updateTrackList }) {
-  const myRef = React.createRef();
+import { MusicContext } from "../../global/MusicContext";
+
+const AddTrackButton = () => {
+  const { getNewTrack } = useContext(MusicContext);
+  const myRef = createRef();
 
   const fileUploadHandler = (e) => {
     const file = e.target.files[0];
-    updateTrackList(file);
+    getNewTrack(file);
   };
 
   return (
@@ -31,4 +34,6 @@ export default function AddTrackButton({ trackList, updateTrackList }) {
       />
     </div>
   );
-}
+};
+
+export default AddTrackButton;
