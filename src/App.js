@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import TrackList from "./components/Tracklist";
 import AddTrackButton from "./components/Controller";
 import AudioPlayer from "react-h5-audio-player";
 import Navbar from "./components/Header/index.jsx";
 
+import { MusicContext } from "./global/MusicContext";
+
 const App = () => {
+  const { trackList, error, nowPlaying, autoNextTrackSelector } =
+    useContext(MusicContext);
+
   return (
     <div className="w-100">
       <Navbar />
       {trackList.length || error !== null ? (
-        <TrackList
-          nowPlaying={nowPlaying}
-          trackList={trackList}
-          setNowPlayingHandler={setNowPlayingHandler}
-          isPlaying={isPlaying}
-          error={error}
-        />
+        <TrackList />
       ) : (
         <h3
           style={{
@@ -30,7 +29,7 @@ const App = () => {
           Add a track and start enjoying...
         </h3>
       )}
-      <AddTrackButton trackList={trackList} updateTrackList={getNewTrack} />
+      <AddTrackButton />
       {nowPlaying.length > 0 ? (
         <AudioPlayer
           src={URL.createObjectURL(new Blob(nowPlaying))}
