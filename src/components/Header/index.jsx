@@ -1,16 +1,9 @@
 import React from "react";
 
-export default function Navbar() {
-  return (
-    <div
-      style={{
-        backgroundColor: "rgb(1, 14, 26)",
-        color: "#fff",
-        textAlign: "center",
-        fontSize: 26,
-      }}
-    >
-      ReactTrack-Play Your Jam
-    </div>
-  );
-}
+import styles from "./styles.module.css";
+
+const Header = () => {
+  return <div className={styles.Header}>ReactTrack-Play Your Jam</div>;
+};
+
+export default Header;

@@ -1,10 +1,13 @@
 import React, { createRef, useContext } from "react";
-import { Button } from "react-bootstrap";
+import AudioPlayer from "react-h5-audio-player";
 
 import { MusicContext } from "../../global/MusicContext";
 
-const AddTrackButton = () => {
-  const { getNewTrack } = useContext(MusicContext);
+import styles from "./styles.module.css";
+
+const Controller = () => {
+  const { getNewTrack, nowPlaying, autoNextTrackSelector } =
+    useContext(MusicContext);
   const myRef = createRef();
 
   const fileUploadHandler = (e) => {
@@ -14,7 +17,7 @@ const AddTrackButton = () => {
 
   return (
     <div style={{ textAlign: "center", background: "#002651" }}>
-      <Button
+      <button
         style={{
           border: "none",
           borderRadius: "50%",
@@ -24,7 +27,7 @@ const AddTrackButton = () => {
         onClick={() => myRef.current.click()}
       >
         +
-      </Button>
+      </button>
       <input
         type="file"
         accept="audio/m4a,audio/mp3,audio/AMR,audio/ogg"
@@ -32,8 +35,16 @@ const AddTrackButton = () => {
         ref={myRef}
         onChange={(e) => fileUploadHandler(e)}
       />
+      {nowPlaying.length > 0 ? (
+        <AudioPlayer
+          src={URL.createObjectURL(new Blob(nowPlaying))}
+          autoPlay
+          volume="0.5"
+          onEnded={autoNextTrackSelector}
+        />
+      ) : null}
     </div>
   );
 };
 
-export default AddTrackButton;
+export default Controller;
