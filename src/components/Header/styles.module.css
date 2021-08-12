@@ -1,8 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap");
 .Header {
   background-color: #010e1a;
   color: #fff;
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   box-shadow: 0px 0px 10px 2px #010e1a;
+}
+
+.HeaderText {
+  display: flex;
+  font-family: "MonteCarlo", cursive;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.subHeaderText {
+  display: none;
+}
+
+@keyframes growingRotatingBtn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.addBtn {
+  cursor: pointer;
+}
+.addBtn:hover {
+  /* transform: scale(1.2); */
+
+  animation: growingRotatingBtn 0.3s linear;
+}
+
+@media only screen and (min-width: 550px) {
+  .subHeaderText {
+    display: flex;
+  }
 }
