@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap");
 .Header {
-  background-color: #010e1a;
+  background-color: #131646;
   color: #fff;
   padding: 0.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 0px 10px 2px #010e1a;
+  box-shadow: 0px 0px 8px 2px #0F1138;
+  margin-bottom: 0.75rem;
 }
 
 .HeaderText {

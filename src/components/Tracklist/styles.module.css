@@ -1,4 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Style+Script&display=swap");
+
 .TrackList {
   flex: 1;
-  background: #002651;
+  background-color: #131646;
+  display: flex;
+  overflow-y: scroll;
+}
+
+.emptyList {
+  justify-content: center;
+  align-items: center;
+}
+
+.filledList {
+  display: flex;
+  padding: 1rem 0px;
+}
+
+.NoTrackHeader {
+  color: #fff;
+  font-size: 2rem;
+  font-family: "Style Script", cursive;
+  letter-spacing: 4px;
+}
+
+.trackCard {
+  height: 50px;
+  width: 100%;
+  padding: 0 0.5rem;
+  background-color: #131646;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 10px 2px #0f1138;
 }
