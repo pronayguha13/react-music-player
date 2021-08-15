@@ -23,12 +23,13 @@ const TrackList = () => {
             <img
               src={`/assets/${
                 isPlaying && nowPlaying[0].name === track.name
-                  ? "pause-button-24.png"
-                  : "playButton.png"
+                  ? "pause.svg"
+                  : "play.svg"
               }`}
+              className={styles.trackBtn}
               alt="pause"
             />
-            <p>{track.name}</p>
+            <p className={styles.trackName}>{track.name}</p>
           </div>
         ))
       ) : (

@@ -13,8 +13,22 @@
 }
 
 .filledList {
-  display: flex;
   padding: 1rem 0px;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@keyframes flashingText {
+  0% {
+    text-shadow: 0px 0px 2px #fff;
+  }
+  50% {
+    text-shadow: 0px 0px 8px #fff;
+  }
+
+  100% {
+    text-shadow: 0px 0px 2px #fff;
+  }
 }
 
 .NoTrackHeader {
@@ -22,12 +36,12 @@
   font-size: 2rem;
   font-family: "Style Script", cursive;
   letter-spacing: 4px;
+  animation: flashingText 1.5s infinite;
 }
 
 .trackCard {
-  height: 50px;
   width: 100%;
-  padding: 0 0.5rem;
+  padding: 1.5rem;
   background-color: #131646;
   display: flex;
   justify-content: flex-start;
@@ -35,4 +49,15 @@
   color: #fff;
   margin-bottom: 10px;
   box-shadow: 0px 0px 10px 2px #0f1138;
+}
+
+.trackBtn {
+  margin-right: 0.5rem;
+  transform: scale(1.25);
+}
+
+.trackName {
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  text-transform: capitalize;
 }

@@ -21,19 +21,17 @@ export const Music = ({ children }) => {
   };
 
   const getNewTrack = (newTrack) => {
-    console.log("getNewTrack -> newTrack", newTrack);
     if (newTrack !== undefined && types.includes(newTrack.type)) {
-      console.log("FileUploadHandler -> newTrack", newTrack);
-      const prevTrackList = trackList;
-      const newTrackList = [...prevTrackList, newTrack];
-      console.log("getNewTrack -> newTrackList", newTrackList);
+      console.log("Adding track...");
+      const newTrackList = [...trackList];
+      newTrackList.push(newTrack);
       setTrackList(newTrackList);
       setError("");
     } else if (newTrack.type === "audio/x-m4a") {
       setError("Unsupported File format");
     } else {
-      console.log("no File or invalid type");
-      setError("Please select an audio file");
+      console.log("Invalid File/type");
+      setError("Please select a valid audio file");
     }
   };
 
@@ -41,6 +39,7 @@ export const Music = ({ children }) => {
     setNowPlaying([trackList[index]]);
     setIsPlaying(true);
   };
+
   return (
     <MusicContext.Provider
       value={{
