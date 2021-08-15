@@ -1,24 +1,15 @@
-import React, { createRef, useState, useContext, useEffect } from "react";
+import React, { createRef, useContext } from "react";
 
 import { MusicContext } from "../../global/MusicContext";
 import styles from "./styles.module.css";
 
 const Header = () => {
-  const [file, setFile] = useState({});
   const { getNewTrack } = useContext(MusicContext);
 
   const fileInputRef = createRef();
 
-  useEffect(() => {
-    if (Object.keys(file).length) getNewTrack(file);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [file]);
-
   const fileUploadHandler = (newFile) => {
-    console.log(
-      "🚀 ~ file: index.jsx ~ line 18 ~ fileUploadHandler ~ newFile",
-      newFile
-    );
+    getNewTrack(newFile);
   };
 
   return (
@@ -38,7 +29,7 @@ const Header = () => {
           accept="audio/m4a,audio/mp3,audio/AMR,audio/ogg"
           style={{ display: "none" }}
           ref={fileInputRef}
-          onChange={(e) => fileUploadHandler(e.target.files)}
+          onChange={(e) => fileUploadHandler(e.target.files[0])}
         />
       </>
     </div>

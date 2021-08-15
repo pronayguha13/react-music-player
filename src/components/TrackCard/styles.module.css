@@ -1,0 +1,27 @@
+.trackCard {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #131646;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 10px 2px #0f1138;
+  padding-left: 0.5rem;
+}
+
+.trackBtn {
+  margin-right: 0.5rem;
+  transform: scale(1.25);
+}
+
+.trackName {
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.dragPlayController{
+    
+}

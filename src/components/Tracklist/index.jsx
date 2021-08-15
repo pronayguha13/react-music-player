@@ -3,9 +3,10 @@ import React, { useContext } from "react";
 import styles from "./styles.module.css";
 import { MusicContext } from "../../global/MusicContext";
 
+import TrackCard from "../TrackCard/index";
+
 const TrackList = () => {
-  const { trackList, nowPlaying, setNowPlayingHandler, isPlaying, error } =
-    useContext(MusicContext);
+  const { trackList, error } = useContext(MusicContext);
 
   return (
     <div
@@ -15,22 +16,7 @@ const TrackList = () => {
     >
       {trackList.length ? (
         trackList.map((track, index) => (
-          <div
-            key={index}
-            className={styles.trackCard}
-            onClick={() => setNowPlayingHandler(index)}
-          >
-            <img
-              src={`/assets/${
-                isPlaying && nowPlaying[0].name === track.name
-                  ? "pause.svg"
-                  : "play.svg"
-              }`}
-              className={styles.trackBtn}
-              alt="pause"
-            />
-            <p className={styles.trackName}>{track.name}</p>
-          </div>
+          <TrackCard key={index} track={track} index={index} />
         ))
       ) : (
         <h3 className={styles.NoTrackHeader}>Play your favorite track</h3>
